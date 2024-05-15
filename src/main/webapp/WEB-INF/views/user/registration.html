@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.reintech.io/variants/o2douig2cv91edd7suk5nqheflzd/e7b4ce09c703210ab8f75b017c7eaf0951c5a95b737ee8120602845c1c1d944b'); /* Підставте шлях до вашого зображення */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: rgba(0, 0, 50, 0.8);
+            padding: 2em;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: white;
+        }
+        .form-container h2 {
+            margin-bottom: 1em;
+        }
+        .form-group {
+            margin-bottom: 1em;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.8em;
+            border: none;
+            border-radius: 20px;
+            margin-top: 0.5em;
+        }
+        .form-group div {
+            color: red;
+            margin-top: 0.5em;
+        }
+        .form-group input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+        }
+        input[type="submit"] {
+            width: 107%;
+            padding: 0.8em;
+            border: none;
+            border-radius: 20px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .toggle-link {
+            margin-top: 1em;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>SIGN UP</h2>
+    <form th:method="POST" th:action="@{/user}" th:object="${user}">
+        <div class="form-group">
+            <input type="text" th:field="*{name}" id="name" placeholder="USERNAME"/>
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+        <div class="form-group">
+            <input type="password" th:field="*{password}" id="password" placeholder="PASSWORD"/>
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+
+        <div class="form-group">
+            <input type="email" th:field="*{email}" id="email" placeholder="EMAIL ADDRESS"/>
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+        <input type="submit" value="SIGN UP">
+    </form>
+    <div class="toggle-link">
+        Already Member?
+    </div>
+</div>
+</body>
+</html>
